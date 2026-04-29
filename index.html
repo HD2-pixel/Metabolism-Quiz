@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Can't I Lose Weight Anymore? — The 2-Minute Parent Metabolism Quiz</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Fraunces:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #3ec6d4;
+    --teal-dark: #2ab0bf;
+    --orange: #e8853a;
+    --orange-light: #f5a55e;
+    --cream: #fffaf5;
+    --dark: #1a2332;
+    --mid: #3d4f63;
+    --light-gray: #f0f4f8;
+    --white: #ffffff;
+    --shadow: 0 8px 32px rgba(62,198,212,0.15);
+    --shadow-card: 0 4px 24px rgba(26,35,50,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    min-height: 100vh;
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* BACKGROUND PATTERN */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(62,198,212,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 90% 80%, rgba(232,133,58,0.07) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 20px 16px 60px;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 32px 0 24px;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(26px, 6vw, 38px);
+    font-weight: 900;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 12px;
+  }
+
+  .header h1 span {
+    color: var(--orange);
+  }
+
+  .header p {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 8px;
+  }
+
+  .time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--teal-dark);
+    margin-top: 8px;
+  }
+
+  /* PROGRESS BAR */
+  .progress-wrap {
+    margin: 24px 0 20px;
+  }
+
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: #dde6ef;
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--teal), var(--orange));
+    border-radius: 100px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* CARD */
+  .card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow-card);
+    border: 1.5px solid rgba(62,198,212,0.12);
+    animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  .question-num {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 10px;
+  }
+
+  .question-text {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(19px, 4.5vw, 24px);
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--dark);
+    margin-bottom: 24px;
+  }
+
+  /* OPTIONS */
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border: 2px solid #e4ecf2;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    background: var(--light-gray);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--dark);
+    text-align: left;
+  }
+
+  .option:hover {
+    border-color: var(--teal);
+    background: rgba(62,198,212,0.06);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(62,198,212,0.15);
+  }
+
+  .option.selected {
+    border-color: var(--teal);
+    background: rgba(62,198,212,0.10);
+    color: var(--dark);
+  }
+
+  .option-dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2px solid #c0d2de;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .option.selected .option-dot {
+    background: var(--teal);
+    border-color: var(--teal);
+  }
+
+  .option.selected .option-dot::after {
+    content: '✓';
+    color: white;
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  /* BUTTON */
+  .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, var(--orange), var(--orange-light));
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.22s ease;
+    box-shadow: 0 6px 24px rgba(232,133,58,0.30);
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(232,133,58,0.40);
+  }
+
+  .btn-primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 14px 24px;
+    background: transparent;
+    color: var(--mid);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: 2px solid #dde6ef;
+    border-radius: 14px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.2s;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--teal);
+    color: var(--teal-dark);
+  }
+
+  /* RESULT PAGE */
+  .result-card {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow-card);
+    border: 1.5px solid rgba(62,198,212,0.15);
+    animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .result-header {
+    padding: 32px 28px 24px;
+    position: relative;
+  }
+
+  .result-header.type1 { background: linear-gradient(135deg, #e8f7f9 0%, #fff5ee 100%); }
+  .result-header.type2 { background: linear-gradient(135deg, #fff0e6 0%, #fef6f0 100%); }
+  .result-header.type3 { background: linear-gradient(135deg, #f0fffe 0%, #e8f7f9 100%); }
+
+  .result-type-label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 6px;
+  }
+
+  .result-emoji {
+    font-size: 48px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .result-type-name {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(22px, 5vw, 30px);
+    font-weight: 900;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+
+  .result-type-name span { color: var(--orange); }
+
+  .result-tagline {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--mid);
+    font-style: italic;
+  }
+
+  .result-body {
+    padding: 28px 28px 32px;
+  }
+
+  .result-body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .action-box {
+    background: linear-gradient(135deg, rgba(62,198,212,0.08), rgba(232,133,58,0.07));
+    border: 1.5px solid rgba(62,198,212,0.25);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 20px 0 24px;
+  }
+
+  .action-box h4 {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--teal-dark);
+    margin-bottom: 8px;
+  }
+
+  .action-box p {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .cta-section {
+    text-align: center;
+    padding-top: 4px;
+  }
+
+  .cta-section h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .cta-section p {
+    font-size: 14px;
+    color: var(--mid);
+    margin-bottom: 16px;
+  }
+
+  .btn-cta {
+    display: block;
+    width: 100%;
+    padding: 20px 24px;
+    background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    box-shadow: 0 6px 24px rgba(62,198,212,0.35);
+    letter-spacing: 0.2px;
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(62,198,212,0.45);
+  }
+
+  .btn-cta small {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.85;
+    margin-top: 3px;
+  }
+
+  .restart-link {
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .restart-link button {
+    background: none;
+    border: none;
+    color: var(--mid);
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+  }
+
+  /* TRUST STRIP */
+  .trust-strip {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    padding: 16px;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--mid);
+  }
+
+  .trust-item span:first-child {
+    font-size: 16px;
+  }
+
+  /* LOADING */
+  .loading-screen {
+    text-align: center;
+    padding: 48px 24px;
+  }
+
+  .spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid rgba(62,198,212,0.2);
+    border-top-color: var(--teal);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 20px;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .loading-screen p {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--mid);
+  }
+
+  .loading-screen .loading-sub {
+    font-size: 14px;
+    font-weight: 600;
+    color: #99b0c2;
+    margin-top: 6px;
+  }
+
+  /* HIDDEN */
+  .hidden { display: none; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    text-align: center;
+    font-size: 12px;
+    color: #a0b4c4;
+    margin-top: 28px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 480px) {
+    .card, .result-header, .result-body { padding-left: 20px; padding-right: 20px; }
+    .trust-strip { gap: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header" id="quizHeader">
+    <div class="badge">Free Quiz for Parents</div>
+    <h1>Why Can't I Lose Weight <span>Anymore?</span></h1>
+    <p>Answer 5 honest questions and find out exactly what's happening to your metabolism — and what to do about it.</p>
+    <div class="time-badge">⏱ Takes less than 2 minutes</div>
+  </div>
+
+  <!-- PROGRESS -->
+  <div class="progress-wrap hidden" id="progressWrap">
+    <div class="progress-label">
+      <span id="progressText">Question 1 of 5</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- QUIZ CONTAINER -->
+  <div id="quizContainer"></div>
+
+  <!-- TRUST STRIP (shown on start screen) -->
+  <div class="trust-strip" id="trustStrip">
+    <div class="trust-item"><span>🔒</span><span>No email required</span></div>
+    <div class="trust-item"><span>⚡</span><span>Instant results</span></div>
+    <div class="trust-item"><span>💯</span><span>100% free</span></div>
+  </div>
+
+  <p class="disclaimer">This quiz is for educational purposes. Results are not medical advice.</p>
+</div>
+
+<script>
+const questions = [
+  {
+    id: 1,
+    text: "When you think about your energy levels throughout the day, which best describes you?",
+    options: [
+      { text: "🪫 I'm exhausted before the day even starts — coffee barely helps", value: "A" },
+      { text: "🎢 I'm okay in the morning but crash hard after lunch", value: "B" },
+      { text: "😤 I have some energy but I'm frustrated because I'm doing everything 'right' and still gaining", value: "C" },
+      { text: "😴 I'm tired all the time, no matter how much sleep I get", value: "A" }
+    ]
+  },
+  {
+    id: 2,
+    text: "How would you describe your relationship with food lately?",
+    options: [
+      { text: "🚫 I barely eat — I keep my calories really low trying to lose weight", value: "B" },
+      { text: "🎲 It's all over the place. I eat well for a few days then fall off completely", value: "C" },
+      { text: "🍕 I eat pretty normal but nothing seems to change on the scale", value: "A" },
+      { text: "😰 I feel guilty about almost everything I eat", value: "C" }
+    ]
+  },
+  {
+    id: 3,
+    text: "What does your workout routine look like right now?",
+    options: [
+      { text: "🏃 I'm doing lots of cardio — but the scale barely budges", value: "B" },
+      { text: "💤 I'm barely moving. I just don't have the time or energy", value: "A" },
+      { text: "💪 I go occasionally but don't have a consistent plan", value: "C" },
+      { text: "😩 I've tried everything — classes, apps, YouTube — nothing sticks", value: "C" }
+    ]
+  },
+  {
+    id: 4,
+    text: "Which of these symptoms hit closest to home for you right now?",
+    options: [
+      { text: "🌡️ Feeling bloated, puffy, or inflamed constantly", value: "A" },
+      { text: "😤 Mood swings, brain fog, and zero patience with my kids", value: "A" },
+      { text: "📉 I used to lose weight easily — now nothing works the same way", value: "B" },
+      { text: "⚖️ The scale goes up and down constantly — I can't break through", value: "C" }
+    ]
+  },
+  {
+    id: 5,
+    text: "What's the #1 reason you haven't been able to make your health a priority?",
+    options: [
+      { text: "⏰ I genuinely don't have time — the kids, work, and life take everything", value: "A" },
+      { text: "😞 I've tried so many things that I've started to believe it just won't work for me", value: "B" },
+      { text: "😔 I feel selfish spending money or time on myself", value: "C" },
+      { text: "🤷 I don't even know where to start — it all feels overwhelming", value: "C" }
+    ]
+  }
+];
+
+const results = {
+  A: {
+    type: "type1",
+    emoji: "🔋",
+    label: "Your Metabolism Type",
+    name: "The Burnt-Out Burner",
+    tagline: "Your body is running on empty — and it's not your fault.",
+    paragraphs: [
+      "Here's what's actually going on: your body has been under chronic stress for so long — juggling kids, work, barely sleeping — that your cortisol levels are through the roof. And high cortisol is basically your body's fat-storage signal. It tells your metabolism to slow down, hold onto every calorie it can, and keep you in survival mode. That's why you're exhausted even when you sleep, and why the weight seems to stick no matter what you do.",
+      "The frustrating part? Most advice out there makes this worse. More cardio = more cortisol. Eating less = signals more famine to your body. You're not lazy. You're not broken. You're a parent running a marathon every single day without a finish line in sight.",
+      "The good news: when we actually fuel your metabolism instead of punishing it, things can shift fast. Your energy comes back first — usually within the first couple of weeks — and the fat loss follows."
+    ],
+    action: "🎯 This week's first step: Add one high-protein breakfast within an hour of waking up. Aim for at least 30g of protein. This single habit tells your body it's safe to burn fat instead of hoard it — and it's something we start with every single client.",
+    ctaHeadline: "Want to know exactly what YOUR metabolism needs?",
+    ctaSub: "I'll walk you through your personal metabolic blueprint in 10 minutes — free, no pressure."
+  },
+  B: {
+    type: "type2",
+    emoji: "🐢",
+    label: "Your Metabolism Type",
+    name: "The Damaged Dieter",
+    tagline: "Years of restriction have trained your body to hold on for dear life.",
+    paragraphs: [
+      "If you've spent years eating less to weigh less, your metabolism has adapted — and not in a good way. When you chronically restrict calories, your body interprets it as a famine signal and actually lowers your basal metabolic rate (the calories you burn just by existing). Translation: your body is now burning fewer calories than it should, even on a 'good' day.",
+      "Add in years of yo-yo dieting and your hunger hormones (leptin and ghrelin) are out of whack too. That's why you feel hungry all the time, or why you can eat almost nothing and still not lose. Cardio makes this worse — it's basically asking your already-exhausted metabolism to do more with less.",
+      "What you actually need is to eat MORE — strategically — to repair the metabolic damage and teach your body it's safe to burn again. I know that sounds backwards. But it's exactly what the science shows, and it's what I watch happen with my clients every week."
+    ],
+    action: "🎯 This week's first step: Stop skipping meals. Seriously. Eating every 3-4 hours with adequate protein keeps your metabolism from going into conservation mode. Start with breakfast and lunch on a consistent schedule — your metabolism responds to patterns and rhythm.",
+    ctaHeadline: "Ready to stop fighting your body and start working with it?",
+    ctaSub: "Let's map out a reset plan built specifically for where your metabolism is at right now."
+  },
+  C: {
+    type: "type3",
+    emoji: "🌀",
+    label: "Your Metabolism Type",
+    name: "The Inconsistent Igniter",
+    tagline: "You have the spark — you just need the right system to keep it lit.",
+    paragraphs: [
+      "You're not lacking willpower — you're lacking a system that actually fits your life as a parent. You've probably seen results before when you really locked in, but life keeps getting in the way. The problem isn't consistency — it's that the approach you've been using requires way more mental bandwidth and time than you actually have.",
+      "Here's what happens: you do great for a few days, then one crazy week derails you. You start over. Repeat. That cycle isn't just frustrating — it's actually sending mixed metabolic signals that make fat loss harder over time. Your hormones need predictability to optimize for fat burning.",
+      "What works for parents like you isn't perfection — it's a simple enough system that a bad week doesn't blow the whole thing. When the plan takes less than 30 minutes a week to follow, you actually follow it. And when you follow it consistently, your metabolism responds quickly."
+    ],
+    action: "🎯 This week's first step: Pick just THREE days to work out this week — and write them on your calendar like appointments. 20-30 minutes of strength training on those three days will do more for your metabolism than 5 random cardio sessions. Show up for those three. That's it.",
+    ctaHeadline: "Let's build you a plan simple enough to actually stick with.",
+    ctaSub: "I'll show you exactly how our parents get results in less than 3 hours a week — and keep them."
+  }
+};
+
+let answers = [];
+let currentQ = 0;
+
+function getScores() {
+  const counts = { A: 0, B: 0, C: 0 };
+  answers.forEach(a => counts[a]++);
+  return counts;
+}
+
+function getResultType() {
+  const counts = getScores();
+  let max = 0, type = 'A';
+  for (const key in counts) {
+    if (counts[key] > max) { max = counts[key]; type = key; }
+  }
+  return type;
+}
+
+function updateProgress() {
+  const pct = Math.round((currentQ / questions.length) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressPercent').textContent = pct + '%';
+  document.getElementById('progressText').textContent = currentQ < questions.length
+    ? `Question ${currentQ + 1} of ${questions.length}`
+    : 'Almost there...';
+}
+
+function renderStart() {
+  const container = document.getElementById('quizContainer');
+  container.innerHTML = `
+    <div class="card">
+      <div class="question-text" style="margin-bottom:12px;">Before we start — real talk:</div>
+      <p style="font-size:15px;color:var(--mid);line-height:1.7;margin-bottom:20px;">
+        If you're a busy parent who's tried "eating less and exercising more" and it's just not working anymore — 
+        this quiz will show you exactly <strong>why</strong> your body is holding on, and what's actually going on with your metabolism.
+      </p>
+      <button class="btn-primary" onclick="startQuiz()">Start the Quiz →</button>
+    </div>
+  `;
+}
+
+function startQuiz() {
+  document.getElementById('trustStrip').classList.add('hidden');
+  document.getElementById('progressWrap').classList.remove('hidden');
+  showQuestion(0);
+}
+
+function showQuestion(index) {
+  currentQ = index;
+  updateProgress();
+  const q = questions[index];
+  const container = document.getElementById('quizContainer');
+
+  container.innerHTML = `
+    <div class="card">
+      <div class="question-num">Question ${index + 1} of ${questions.length}</div>
+      <div class="question-text">${q.text}</div>
+      <div class="options" id="options">
+        ${q.options.map((opt, i) => `
+          <button class="option" onclick="selectOption(${i}, '${opt.value}')" data-index="${i}">
+            <div class="option-dot" id="dot-${i}"></div>
+            <span>${opt.text}</span>
+          </button>
+        `).join('')}
+      </div>
+      <button class="btn-primary" id="nextBtn" disabled onclick="nextQuestion()">
+        ${index === questions.length - 1 ? 'See My Results →' : 'Next Question →'}
+      </button>
+      ${index > 0 ? `<button class="btn-secondary" onclick="prevQuestion()">← Back</button>` : ''}
+    </div>
+  `;
+
+  // Restore previous answer if navigating back
+  if (answers[index] !== undefined) {
+    const prevVal = answers[index];
+    q.options.forEach((opt, i) => {
+      if (opt.value === prevVal) {
+        document.querySelectorAll('.option')[i].classList.add('selected');
+        document.getElementById('nextBtn').disabled = false;
+      }
+    });
+  }
+}
+
+let selectedIndex = null;
+
+function selectOption(i, value) {
+  document.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+  document.querySelectorAll('.option')[i].classList.add('selected');
+  answers[currentQ] = value;
+  selectedIndex = i;
+  document.getElementById('nextBtn').disabled = false;
+}
+
+function nextQuestion() {
+  if (currentQ < questions.length - 1) {
+    showQuestion(currentQ + 1);
+  } else {
+    showLoading();
+  }
+}
+
+function prevQuestion() {
+  if (currentQ > 0) showQuestion(currentQ - 1);
+}
+
+function showLoading() {
+  updateProgress();
+  document.getElementById('progressFill').style.width = '100%';
+  document.getElementById('progressPercent').textContent = '100%';
+  document.getElementById('progressText').textContent = 'Analyzing your results...';
+  document.getElementById('quizHeader').classList.add('hidden');
+  document.getElementById('quizContainer').innerHTML = `
+    <div class="card">
+      <div class="loading-screen">
+        <div class="spinner"></div>
+        <p>Figuring out your metabolism type...</p>
+        <p class="loading-sub">Hang tight — this one's actually personalized 👀</p>
+      </div>
+    </div>
+  `;
+  setTimeout(showResult, 2000);
+}
+
+function showResult() {
+  const type = getResultType();
+  const r = results[type];
+  document.getElementById('progressWrap').classList.add('hidden');
+
+  document.getElementById('quizContainer').innerHTML = `
+    <div class="result-card">
+      <div class="result-header ${r.type}">
+        <div class="result-type-label">Your Metabolism Type</div>
+        <span class="result-emoji">${r.emoji}</span>
+        <div class="result-type-name">${r.name.replace(/(.*)( \w+)$/, '<span>$&</span>')}</div>
+        <div class="result-tagline">"${r.tagline}"</div>
+      </div>
+      <div class="result-body">
+        ${r.paragraphs.map(p => `<p>${p}</p>`).join('')}
+        <div class="action-box">
+          <h4>✅ Your Action Step This Week</h4>
+          <p>${r.action}</p>
+        </div>
+        <div class="cta-section">
+          <h3>${r.ctaHeadline}</h3>
+          <p>${r.ctaSub}</p>
+          <a href="https://api.leadconnectorhq.com/widget/bookings/rapportcall15-61c1a452-5ad0-40fc-a0b5-d3bae50ee8db"
+             class="btn-cta" target="_blank">
+            Book Your Free 10-Min Metabolism Audit Call
+            <small>No pressure. No sales pitch. Just clarity. 🙌</small>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="restart-link">
+      <button onclick="restartQuiz()">↩ Retake the quiz</button>
+    </div>
+  `;
+}
+
+function restartQuiz() {
+  answers = [];
+  currentQ = 0;
+  document.getElementById('quizHeader').classList.remove('hidden');
+  document.getElementById('progressWrap').classList.add('hidden');
+  document.getElementById('progressFill').style.width = '0%';
+  document.getElementById('trustStrip').classList.remove('hidden');
+  renderStart();
+}
+
+// Init
+renderStart();
+</script>
+</body>
+</html>
